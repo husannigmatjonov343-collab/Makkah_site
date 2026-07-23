@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Duo va ziyoratlar — Makka & Umra{% endblock %}
+{% block description %}Umra davomida o'qiladigan duolar: arab matni, transliteratsiya va o'zbekcha tarjimasi.{% endblock %}
+{% block content %}
+
+<section class="hero" style="padding: 64px 0 76px;">
+  <svg class="hero-star-field" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="star8d" width="90" height="90" patternUnits="userSpaceOnUse">
+        <path d="M45 5 L55 35 L85 45 L55 55 L45 85 L35 55 L5 45 L35 35 Z" stroke="#d4b45f" stroke-width="1" fill="none"/>
+      </pattern>
+    </defs>
+    <rect width="800" height="500" fill="url(#star8d)"/>
+  </svg>
+  <div class="container" style="grid-template-columns: 1fr;">
+    <div>
+      <span class="hero-eyebrow">🤲 Zikr va duolar • {{ duas | length }} ta duo</span>
+      <h1>Duo va ziyoratlar</h1>
+      <p class="lead">Umraning har bir bosqichida o'qiladigan duolar — arab matni, o'qilishi va ma'nosi bilan.
+        Quyidagi filtr orqali kerakli bosqich duolarini alohida ko'rishingiz mumkin.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width: 860px;">
+
+    <div class="tabs">
+      <input type="radio" name="dua-tab" id="tab-all" checked>
+      <input type="radio" name="dua-tab" id="tab-1">
+      <input type="radio" name="dua-tab" id="tab-2">
+      <input type="radio" name="dua-tab" id="tab-3">
+      <input type="radio" name="dua-tab" id="tab-4">
+
+      <div class="tab-labels">
+        <label for="tab-all">Barchasi</label>
+        <label for="tab-1">🤍 Ihrom</label>
+        <label for="tab-2">🕋 Tavof</label>
+        <label for="tab-3">🚶 Sa'y</label>
+        <label for="tab-4">💧 Ziyorat</label>
+      </div>
+
+      <div class="tab-content">
+        {% for dua in duas %}
+        {% set tag_num = {"Ihrom": "1", "Tavof": "2", "Sa'y": "3", "Ziyorat": "4"}.get(dua.tag, "1") %}
+        <div class="tab-panel" data-tag="{{ tag_num }}">
+          <div class="dua-card">
+            <span class="tag-pill">{{ dua.tag }}</span>
+            <h3 style="margin-top: 10px;">{{ dua.title }}</h3>
+            <div class="dua-occasion">🕐 {{ dua.occasion }}</div>
+            {% if dua.arabic_text %}<div class="dua-arabic">{{ dua.arabic_text }}</div>{% endif %}
+            {% if dua.transliteration %}<div class="dua-translit">{{ dua.transliteration }}</div>{% endif %}
+            <p class="dua-translation">{{ dua.translation }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="quote-block" style="margin-top: 20px;">
+      <span class="quote-mark">"</span>
+      <p>Duo — bandaning Robbisi bilan bevosita muloqoti. Umra davomida qalbdan qilingan har bir
+        duo, hatto o'z ona tilingizda aytilsa ham, qabul bo'lishiga umid qilinadi.</p>
+      <div class="quote-source">ESLATMA</div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

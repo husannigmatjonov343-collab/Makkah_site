@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}{{ category.title }} — Makka & Umra{% endblock %}
+{% block description %}{{ category.description }}{% endblock %}
+{% block content %}
+
+<section class="hero" style="padding: 64px 0 76px;">
+  <svg class="hero-star-field" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="star8b" width="90" height="90" patternUnits="userSpaceOnUse">
+        <path d="M45 5 L55 35 L85 45 L55 55 L45 85 L35 55 L5 45 L35 35 Z" stroke="#d4b45f" stroke-width="1" fill="none"/>
+      </pattern>
+    </defs>
+    <rect width="800" height="500" fill="url(#star8b)"/>
+  </svg>
+  <div class="container" style="grid-template-columns: 1fr;">
+    <div>
+      <span class="hero-eyebrow">{{ category.icon }} Bo'lim • {{ category.articles | length }} ta maqola</span>
+      <h1>{{ category.title }}</h1>
+      <p class="lead">{{ category.description }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="with-sidebar">
+      <div>
+        <div class="card-grid">
+          {% for article in category.articles %}
+          <a class="card" href="/maqola/{{ article.slug }}">
+            <span class="tag-pill">{{ loop.index }}-maqola</span>
+            <h3 style="margin-top: 12px;">{{ article.title }}</h3>
+            <p>{{ article.summary }}</p>
+            {% if article.quick_fact %}
+            <p style="font-size: 0.82rem; color: var(--gold); margin-bottom: 14px;">💡 {{ article.quick_fact }}</p>
+            {% endif %}
+            <span class="read-more">To'liq o'qish →</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <aside>
+        <div class="sidebar-box">
+          <h4>✦ Bu bo'limdagi qisqa faktlar</h4>
+          {% for article in category.articles %}
+            {% if article.quick_fact %}
+            <p class="fact" style="margin-bottom: 10px;">{{ article.quick_fact }}</p>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="sidebar-box">
+          <h4>📚 Boshqa bo'limlar</h4>
+          <ul class="sidebar-list">
+            {% if category.slug != 'tarix' %}<li><a href="/tarix">🕋 Makka tarixi</a></li>{% endif %}
+            {% if category.slug != 'fazilatlar' %}<li><a href="/fazilatlar">✨ Makkaning fazilatlari</a></li>{% endif %}
+            <li><a href="/umra">🚶 Umra qadamlari</a></li>
+            <li><a href="/duolar">🤲 Duo va ziyoratlar</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

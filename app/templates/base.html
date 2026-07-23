@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Makkai Mukarrama & Umra{% endblock %}</title>
+  <meta name="description" content="{% block description %}Makkai Mukarramaning tarixi, fazilatlari, Umra qadamlari va duolari haqida to'liq ma'lumot.{% endblock %}">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕋</text></svg>">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="brand"><span class="star">✦</span> Makka&nbsp;&amp;&nbsp;Umra</a>
+      <nav class="main-nav">
+        <a href="/" class="{{ 'active' if active == 'home' }}">Bosh sahifa</a>
+        <a href="/tarix" class="{{ 'active' if active == 'tarix' }}">Tarix</a>
+        <a href="/fazilatlar" class="{{ 'active' if active == 'fazilatlar' }}">Fazilatlar</a>
+        <a href="/umra" class="{{ 'active' if active == 'umra' }}">Umra qadamlari</a>
+        <a href="/duolar" class="{{ 'active' if active == 'duolar' }}">Duolar</a>
+        <a href="/savol-javob" class="{{ 'active' if active == 'faq' }}">Savol-javob</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menyuni ochish" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <button class="back-to-top" aria-label="Yuqoriga qaytish">↑</button>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <div class="footer-brand">🕋 Makka &amp; Umra</div>
+        <p class="footer-note">Ushbu sayt ta'lim-ma'rifat maqsadida tayyorlangan. Diniy amallar bo'yicha aniq
+          hukmlar uchun malakali ulamolarga murojaat qiling.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/tarix">Tarix</a>
+        <a href="/fazilatlar">Fazilatlar</a>
+        <a href="/umra">Umra qadamlari</a>
+        <a href="/duolar">Duolar</a>
+        <a href="/savol-javob">Savol-javob</a>
+        <a href="/docs">API hujjatlari</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

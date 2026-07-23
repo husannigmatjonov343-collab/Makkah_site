@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% block title %}Makka & Umra — tarix, fazilatlar va amaliy yo'llanma{% endblock %}
+{% block content %}
+
+<section class="hero">
+  <svg class="hero-star-field" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="star8" width="90" height="90" patternUnits="userSpaceOnUse">
+        <g stroke="#d4b45f" stroke-width="1" fill="none">
+          <path d="M45 5 L55 35 L85 45 L55 55 L45 85 L35 55 L5 45 L35 35 Z"/>
+        </g>
+      </pattern>
+    </defs>
+    <rect width="800" height="500" fill="url(#star8)"/>
+  </svg>
+  <div class="container">
+    <div>
+      <span class="hero-eyebrow">Tarix • Fazilatlar • Umra • Duolar</span>
+      <h1>Makkai Mukarrama va Umra haqida to'liq yo'llanma</h1>
+      <p class="lead">Ka'baning tarixidan tortib, Umra qadamlari va har bir bosqichda o'qiladigan
+        duolargacha — barchasi bir joyda, tartibli va ishonchli manba asosida.</p>
+      <div class="hero-actions">
+        <a href="/umra" class="btn btn-gold">Umra qadamlarini ko'rish</a>
+        <a href="/tarix" class="btn btn-ghost">Tarixni o'rganish</a>
+      </div>
+    </div>
+    <svg class="kaaba-glyph" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="60" width="140" height="130" fill="#14110f" stroke="#b08d3e" stroke-width="2"/>
+      <rect x="40" y="118" width="140" height="20" fill="#b08d3e"/>
+      <rect x="95" y="60" width="30" height="34" fill="#0c0a09" stroke="#d4b45f" stroke-width="1.5"/>
+      <path d="M40 60 L110 30 L180 60 Z" fill="#1f333c" stroke="#b08d3e" stroke-width="2"/>
+      <g stroke="#d4b45f" stroke-width="1" opacity="0.7">
+        <path d="M60 138 L60 190 M90 138 L90 190 M150 138 L150 190"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== STATISTIKA ===== -->
+<section class="section" style="padding-top: 56px; padding-bottom: 56px;">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-box">
+        <span class="stat-num">6</span>
+        <span class="stat-label">Umra bosqichi</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">{{ duas_count }}</span>
+        <span class="stat-label">Duo va ziyorat</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">12+</span>
+        <span class="stat-label">Batafsil maqola</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Bepul va ochiq</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BO'LIMLAR ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Bo'limlar</span>
+      <h2>Nimadan boshlaymiz?</h2>
+      <p>Har bir bo'lim mustaqil, lekin birgalikda Umra safaringizni ma'nan va amaliy jihatdan
+        tayyorlashga yordam beradi.</p>
+      <div class="divider">✦</div>
+    </div>
+    <div class="card-grid">
+      {% for cat in categories %}
+      <a class="card" href="/{{ cat.slug }}">
+        <span class="icon">{{ cat.icon }}</span>
+        <h3>{{ cat.title }}</h3>
+        <p>{{ cat.subtitle }}</p>
+        <span class="read-more">Batafsil o'qish →</span>
+      </a>
+      {% endfor %}
+      <a class="card" href="/umra">
+        <span class="icon">🕋</span>
+        <h3>Umra qadamlari</h3>
+        <p>Ihromdan soch oldirishgacha — 6 bosqichda, duolari bilan.</p>
+        <span class="read-more">Qadamlarni ko'rish →</span>
+      </a>
+      <a class="card" href="/duolar">
+        <span class="icon">🤲</span>
+        <h3>Duo va ziyoratlar</h3>
+        <p>{{ duas_count }} ta duo — arab matni, transliteratsiya va tarjimasi bilan.</p>
+        <span class="read-more">Duolarni ko'rish →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEGA BU SAYT ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Nega aynan shu sayt</span>
+      <h2>Umra safaringiz uchun ishonchli hamroh</h2>
+      <div class="divider">✦</div>
+    </div>
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon">📖</div>
+        <h4>Tartibli tuzilma</h4>
+        <p>Tarix, fazilatlar, amaliy qadamlar va duolar — hammasi mantiqiy ketma-ketlikda.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🕌</div>
+        <h4>Arab matni + tarjima</h4>
+        <p>Har bir duo asl arabcha matni, o'qilishi (transliteratsiya) va ma'nosi bilan berilgan.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">✅</div>
+        <h4>Amaliy maslahatlar</h4>
+        <p>Har bir bosqichda tez-tez uchraydigan savollar va amaliy maslahatlar keltirilgan.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📱</div>
+        <h4>Har qanday qurilmada</h4>
+        <p>Sayt telefon, planshet va kompyuterda bir xilda qulay ishlaydi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== UMRA QADAMLARI PREVIEW ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Umra qadamlari — qisqacha</span>
+      <h2>Birinchi uchta qadam</h2>
+      <p>To'liq ro'yxatni "Umra qadamlari" bo'limida ko'rishingiz mumkin.</p>
+      <div class="divider">✦</div>
+    </div>
+    <div class="timeline">
+      {% for step in steps %}
+      <div class="step">
+        <div class="step-num">{{ step.step_number }}</div>
+        <div class="step-body">
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div style="text-align:center; margin-top: 24px;">
+      <a href="/umra" class="btn btn-gold">Barcha qadamlarni ko'rish</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IQTIBOS ===== -->
+<section class="section">
+  <div class="container">
+    <div class="quote-block">
+      <span class="quote-mark">"</span>
+      <p>Musulmonlar har kuni besh vaqt namozda dunyoning qaysi burchagida bo'lishidan qat'i
+        nazar bir nuqtaga — Ka'baga yuzlanadi. Bu ummat birligining eng ravshan ramzidir.</p>
+      <div class="quote-source">MA'NAVIY MULOHAZA</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ TIZER ===== -->
+<section class="section section-alt">
+  <div class="container" style="max-width: 720px; text-align: center;">
+    <span class="section-eyebrow">Savollaringiz bormi?</span>
+    <h2 style="font-family: var(--display-font); font-size: 1.8rem; margin: 12px 0 18px;">
+      Umra haqida ko'p so'raladigan savollarga javob toping
+    </h2>
+    <a href="/savol-javob" class="btn btn-gold">Savol-javob bo'limiga o'tish</a>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }} — Makka & Umra{% endblock %}
+{% block description %}{{ article.summary }}{% endblock %}
+{% block content %}
+
+<div class="reading-progress"><div class="reading-progress-bar"></div></div>
+
+<section class="section" style="padding-top: 48px;">
+  <div class="container">
+    <p class="breadcrumb">
+      <a href="/">Bosh sahifa</a> /
+      <a href="/{{ article.category.slug }}">{{ article.category.title }}</a> /
+      {{ article.title }}
+    </p>
+
+    <div class="with-sidebar">
+      <!-- ===== ASOSIY MATN ===== -->
+      <article class="article-body" style="max-width: none;">
+        <span class="tag-pill">{{ article.category.icon }} {{ article.category.title }}</span>
+        <h1 style="margin-top: 14px;">{{ article.title }}</h1>
+        <p style="color: var(--text-muted); font-size: 1.05rem; margin: 10px 0 6px;">{{ article.summary }}</p>
+        <p class="reading-time">📖 O'qish vaqti: taxminan {{ (article.body.split() | length // 180) + 1 }} daqiqa</p>
+
+        <div class="divider" style="margin: 28px 0;">✦</div>
+
+        {% for paragraph in article.body.split('\n\n') %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+
+        {% if related %}
+        <div class="divider" style="margin: 40px 0 20px;">✦</div>
+        <h3 style="font-family: var(--display-font); font-size: 1.15rem; margin-bottom: 4px;">
+          Shu bo'limdagi boshqa maqolalar
+        </h3>
+        <div class="related-grid">
+          {% for r in related %}
+          <a class="card" href="/maqola/{{ r.slug }}" style="padding: 20px;">
+            <h3 style="font-size: 1.02rem;">{{ r.title }}</h3>
+            <p style="font-size: 0.86rem;">{{ r.summary }}</p>
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="article-pager">
+          <a href="/{{ article.category.slug }}">← {{ article.category.title }} bo'limiga qaytish</a>
+          <a href="/umra">Umra qadamlariga o'tish →</a>
+        </div>
+      </article>
+
+      <!-- ===== YON PANEL ===== -->
+      <aside>
+        {% if article.quick_fact %}
+        <div class="sidebar-box">
+          <h4>💡 Qisqa fakt</h4>
+          <p class="fact">{{ article.quick_fact }}</p>
+        </div>
+        {% endif %}
+
+        <div class="sidebar-box">
+          <h4>🕋 Tezkor havolalar</h4>
+          <ul class="sidebar-list">
+            <li><a href="/tarix">Makka tarixi</a></li>
+            <li><a href="/fazilatlar">Makkaning fazilatlari</a></li>
+            <li><a href="/umra">Umra qadamlari</a></li>
+            <li><a href="/duolar">Duo va ziyoratlar</a></li>
+            <li><a href="/savol-javob">Savol-javob</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-box" style="background: var(--night); border-color: var(--night); color: var(--marble);">
+          <h4 style="color: var(--gold-bright);">🤲 Umra sayohatiga tayyormisiz?</h4>
+          <p class="fact" style="color: rgba(244,239,226,0.85);">Har bir bosqichni duolari bilan
+            birga ko'rish uchun "Umra qadamlari" bo'limiga o'ting.</p>
+          <a href="/umra" class="btn btn-gold" style="margin-top: 12px; padding: 10px 20px; font-size: 0.85rem;">Qadamlarni ko'rish</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

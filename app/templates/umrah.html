@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Umra qadamlari — Makka & Umra{% endblock %}
+{% block description %}Umraning barcha bosqichlari: ihromdan soch oldirishgacha, har biri duolari bilan.{% endblock %}
+{% block content %}
+
+<section class="hero" style="padding: 64px 0 80px;">
+  <svg class="hero-star-field" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="star8c" width="90" height="90" patternUnits="userSpaceOnUse">
+        <path d="M45 5 L55 35 L85 45 L55 55 L45 85 L35 55 L5 45 L35 35 Z" stroke="#d4b45f" stroke-width="1" fill="none"/>
+      </pattern>
+    </defs>
+    <rect width="800" height="500" fill="url(#star8c)"/>
+  </svg>
+  <div class="container" style="grid-template-columns: 1fr;">
+    <div>
+      <span class="hero-eyebrow">🕋 Amaliy yo'llanma • {{ steps | length }} bosqich</span>
+      <h1>Umra qadamlari</h1>
+      <p class="lead">Ihromga kirishdan soch oldirishgacha — har bir bosqichda qisqacha tushuntirish,
+        tegishli duo va amaliy maslahat bilan.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Safar oldidan</span>
+      <h2>Tayyorgarlik ro'yxati</h2>
+      <p>Yo'lga chiqishdan oldin quyidagilarni tekshirib chiqing.</p>
+      <div class="divider">✦</div>
+    </div>
+    <ul class="checklist">
+      <li>Pasport va viza muddati kamida 6 oy amal qilishini tekshirish</li>
+      <li>Ihrom kiyimi (erkaklar uchun 2 dona) va qulay, tikilmagan poyabzal tayyorlash</li>
+      <li>Kerakli emlanishlar haqida shifokor bilan maslahatlashish</li>
+      <li>Yetarli miqdorda naqd pul va bank kartasini birga olish</li>
+      <li>Duolar ro'yxatini oldindan yodlab yoki qog'ozga yozib olish</li>
+      <li>Turar joy va transport bandligini oldindan tasdiqlash</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Bosqichma-bosqich</span>
+      <h2>Umra qanday bajariladi</h2>
+      <p>Har bir qadamni tartib bilan, shoshilmasdan bajaring.</p>
+      <div class="divider">✦</div>
+    </div>
+    <div class="timeline">
+      {% for step in steps %}
+      <div class="step">
+        <div class="step-num">{{ step.step_number }}</div>
+        <div class="step-body">
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+          {% if step.arabic_text %}
+          <div class="step-arabic">{{ step.arabic_text }}</div>
+          <div class="step-translit">{{ step.transliteration }}</div>
+          <div class="step-meaning">{{ step.meaning }}</div>
+          {% endif %}
+          {% if step.tip %}
+          <div class="step-tip">💡 {{ step.tip }}</div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="quote-block">
+      <span class="quote-mark">🕋</span>
+      <p>Umra tugagach ham ibodat davom etadi — Masjidul Haramda imkon qadar ko'proq vaqt
+        o'tkazib, namoz va zikr bilan mashg'ul bo'lish tavsiya etiladi.</p>
+      <div class="quote-source">YAKUNIY ESLATMA</div>
+    </div>
+    <div style="text-align:center; margin-top: 28px;">
+      <a href="/duolar" class="btn btn-gold">Barcha duolarni ko'rish</a>
+      <a href="/savol-javob" class="btn btn-ghost">Savol-javobga o'tish</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

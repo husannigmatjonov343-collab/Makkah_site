@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Savol-javob — Makka & Umra{% endblock %}
+{% block description %}Umra va Makka haqida ko'p so'raladigan savollarga qisqa va aniq javoblar.{% endblock %}
+{% block content %}
+
+<section class="hero" style="padding: 64px 0 70px;">
+  <svg class="hero-star-field" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="star8e" width="90" height="90" patternUnits="userSpaceOnUse">
+        <path d="M45 5 L55 35 L85 45 L55 55 L45 85 L35 55 L5 45 L35 35 Z" stroke="#d4b45f" stroke-width="1" fill="none"/>
+      </pattern>
+    </defs>
+    <rect width="800" height="500" fill="url(#star8e)"/>
+  </svg>
+  <div class="container" style="grid-template-columns: 1fr;">
+    <div>
+      <span class="hero-eyebrow">❓ {{ faqs | length }} ta savol</span>
+      <h1>Ko'p so'raladigan savollar</h1>
+      <p class="lead">Umra safariga tayyorgarlik ko'rayotganlar tez-tez beradigan savollarga
+        qisqa va aniq javoblar to'plami.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width: 760px;">
+    {% set ns = namespace(opened=false) %}
+    {% for tag, group in faqs | groupby('tag') %}
+    <div class="accordion-group">
+      <p class="accordion-group-title">{{ tag }}</p>
+      {% for faq in group %}
+      <details class="accordion-item" {% if not ns.opened %}open{% endif %}>
+        <summary>{{ faq.question }}</summary>
+        <div class="accordion-body">{{ faq.answer }}</div>
+      </details>
+      {% set ns.opened = true %}
+      {% endfor %}
+    </div>
+    {% endfor %}
+
+    <div class="quote-block" style="margin-top: 12px;">
+      <span class="quote-mark">?</span>
+      <p>Javobini topa olmadingizmi? Mahalliy masjid imomi yoki Umra tashkilotchingiz bilan
+        bevosita maslahatlashishni tavsiya qilamiz.</p>
+      <div class="quote-source">QO'SHIMCHA YORDAM</div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
