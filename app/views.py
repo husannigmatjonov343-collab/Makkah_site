@@ -1,7 +1,4 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 def home(request):
-    return HttpResponse("Welcome home!")
-    # Or if you're using a template:
-    # return render(request, 'home.html')
+    return render(request, 'index.html')  # index.html o'rniga o'zingizning HTML faylingiz nomini yozing
