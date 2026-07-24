@@ -10,8 +10,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-produc
 # Vercel'da test rejimi
 DEBUG=False
 # Vercel domenlari va localhost uchun ruxsatlar
-ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = ['*']  # Barcha domenlarga vaqtincha ruxsat berish
 # O'rnatilgan ilovalar
 INSTALLED_APPS = [
     'django.contrib.admin',
