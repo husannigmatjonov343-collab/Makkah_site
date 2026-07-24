@@ -1,10 +1,13 @@
-from django.http import HttpResponse
+from django.contrib import admin
 from django.urls import path
+from django.http import HttpResponse
+from . import views  # agar views shu papkada bo'lsa
 
 urlpatterns = [
-    # ... sizning boshqa url'laringiz ...
+    # 1. Asosiy Bosh sahifa (Shu yetishmayotgan edi!):
+    path('', views.home, name='home'),
 
-    # Favicon so'rovlarini e'tiborsiz qoldirish (Bo'sh 204 javob qaytaradi):
+    # 2. Favicon xatolarini yutib yuboradigan yo'llar:
     path('favicon.ico', lambda r: HttpResponse(status=204)),
     path('favicon.png', lambda r: HttpResponse(status=204)),
 ]
