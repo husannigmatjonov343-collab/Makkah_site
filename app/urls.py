@@ -3,5 +3,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Agar routers yoki views bo'lsa, shu yerda ulaysiz
+    path('', include('app.urls')),  # Point root path to your app's urls.py
 ]
