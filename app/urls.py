@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 from django.urls import path
-from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    
-    # favicon.png so'rovi kelganda 204 (No Content) qaytaradi va log toza turadi:
+    # ... sizning boshqa url'laringiz ...
+
+    # Favicon so'rovlarini e'tiborsiz qoldirish (Bo'sh 204 javob qaytaradi):
+    path('favicon.ico', lambda r: HttpResponse(status=204)),
+    path('favicon.png', lambda r: HttpResponse(status=204)),
 ]
