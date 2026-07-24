@@ -58,7 +58,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myproject.wsgi.application'
+WSGI_APPLICATION = 'app.wsgi.application'
 
 
 # Ma'lumotlar bazasi (Boshlanishiga SQLite3)
