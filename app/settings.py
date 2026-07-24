@@ -40,7 +40,7 @@ MIDDLEWARE = [
 
 # Loyihangizning asosiy URL konfigratsiyasi
 # 'myproject' o'rniga o'zingizning loyiha papkangiz nomini yozing!
-ROOT_URLCONF = 'myproject.urls'
+ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [
     {
