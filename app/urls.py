@@ -1,7 +1,7 @@
-# ✅ TO'G'RI: app/urls.py
+# app/urls.py
 from django.urls import path
-from . import views  # Views faylidan funksiyani olasiz
+from . import views
 
 urlpatterns = [
-    path('', views.home_page, name='home'), # include EMAS, view funksiyasi bo'lishi kerak!
+    path('', views.home, name='home'),
 ]
